@@ -5,23 +5,11 @@ import Frankestein from "./imagenes/frankenstein.jpg";
 
 function ItemListContainer(props) {
     return (
-        <div>
-            <div>
-                <img src={Orgullo} alt="Orgullo" />
-                <h2>{props.titulo1}</h2>
-            </div>
-            
-            <div>
-                <img src={Alicia} alt="Alicia" />
-                <h2>{props.titulo2}</h2>
-            </div>
-            
-            <div>
-                <img src={Frankestein} alt="Frankestein" />
-                <h2>{props.titulo3}</h2>
-            </div>
+        <div className="item-container">
+            <img src={props.img} alt={props.titulo} />
+            <h2>{props.titulo}</h2>
+            <p>Precio: {props.precio}</p>
         </div>
     );
 }
-
 export default ItemListContainer;
