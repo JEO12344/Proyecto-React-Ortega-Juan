@@ -1,20 +1,35 @@
 import axio from 'axio';
 
 
-const searchImages = ()=>{
+const searchImages = async ( term )=>{
 
 
-    const response = axios.get("https://api.unsplash.com/search/photos",{
+    const response = await axios.get("https://api.unsplash.com/search/photos",{
         headers:{
-            Authorization:"Client-ID xQ1DziFEZl_V11JMl1yoq7VV8i2T0NIM6YOpDYnzrHY"
+            Authorization:"Client-ID TU-API-KEY"
         },
         params:{
-            query:"Dogs"
+            query:term
         }
     })
-console.log(response.date.results);
-return response;
 
+    console.log(response.data.results);
+
+
+    return response.data.results;
+
+}
+
+function App() {
+
+    const handleSubmit = (term) =>{
+        console.log("Hagamos una busqueda de ", term)
+    }
+    return (
+        <div>
+            <SearchBar enSubmit={handleSubmit}/>
+        </div>
+    )
 }
 
 export default searchImages;
