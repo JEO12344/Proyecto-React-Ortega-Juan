@@ -1,15 +1,17 @@
 import React from 'react';
-import CartWidget from './CartWidget';
-import "./Navbar.css"
 import { Link } from 'react-router-dom';
+import CartWidget from './CartWidget';
 import logo from "./imagenes/favicon.png";
+import "./Navbar.css"
 
 const Navbar = ({ handleCategoriaClick }) => {
   return (
     <nav className='navbar'>
       <div className="navbar-logo">
-        <p>Libreria Minvera</p>
-        <img src={logo} alt="Logo" />
+        <Link to="/">
+          <p>Libreria Minvera</p>
+          <img src={logo} alt="Logo" />
+        </Link>
       </div>
       <ul className="navbar-links">
         <li><Link to="/" onClick={() => handleCategoriaClick('')}>Inicio</Link></li>
@@ -21,6 +23,5 @@ const Navbar = ({ handleCategoriaClick }) => {
     </nav>
   );
 };
-
 
 export default Navbar;

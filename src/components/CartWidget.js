@@ -1,14 +1,15 @@
 import React from 'react';
+import './CartWidget.css';
 import { Link } from 'react-router-dom';
 import cartIcon from "./imagenes/carrito.png";
 
-const CartWidget = () => {
-  const cartItemCount = 3;
-
+const CartWidget = ({ cartItemCount }) => {
   return (
-    <div>
-      <img src={cartIcon} alt="Cart Icon" style={{ width: '30px', height: '30px' }} />
-      <span style={{ marginLeft: '5px' }}>{cartItemCount}</span>
+    <div className="cart-widget">
+      <Link to="/cart">
+        <img src={cartIcon} alt="Cart Icon" />
+        {cartItemCount > 0 && <span>{cartItemCount}</span>}
+      </Link>
     </div>
   );
 };

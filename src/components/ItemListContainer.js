@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import ItemList from './ItemList';
-import { getProducts } from "./asyncMock"
+import { getProductos } from '../data/productos';
 
-const ItemListContainer = ({ greeting }) => {
-  const [libros, setLibros] = useState([]);
+const ItemListContainer = () => {
+  const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    getProducts()
-      .then(response => {
-        setLibros(response);
-      })
-      .catch(error => {
-        console.error(error);
-      });
+    getProductos()
+      .then(data => setProductos(data))
+      .catch(error => console.error(error));
   }, []);
 
   return (
     <div>
-      <h1>{greeting}</h1>
-      <ItemList productos={libros} />
+      <h2>Libros Disponibles</h2>
+      <ItemList productos={productos} />
     </div>
   );
 };
