@@ -2,14 +2,26 @@ import React, { useState, useEffect } from 'react';
 import ItemList from './ItemList';
 import { getProductos } from '../data/productos';
 
-const ItemListContainer = () => {
+const ItemListContainer = ({ categoriaSeleccionada }) => {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    getProductos()
-      .then(data => setProductos(data))
-      .catch(error => console.error(error));
-  }, []);
+    const fetchProductos = async () => {
+      try {
+        const data = await getProductos();
+        if (categoriaSeleccionada) {
+          const productosFiltrados = data.filter(producto => producto.categoria === categoriaSeleccionada);
+          setProductos(productosFiltrados);
+        } else {
+          setProductos(data);
+        }
+      } catch (error) {
+        console.error('Error fetching productos:', error);
+      }
+    };
+
+    fetchProductos();
+  }, [categoriaSeleccionada]);
 
   return (
     <div>

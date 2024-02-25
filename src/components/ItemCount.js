@@ -15,12 +15,16 @@ const ItemCount = ({ stock, initial, onAdd }) => {
     }
   };
 
+  const handleAdd = () => {
+    onAdd(quantity); // Llamar a la función onAdd con la cantidad seleccionada
+  };
+
   return (
     <div>
       <button onClick={decrement}>-</button>
       <span>{quantity}</span>
       <button onClick={increment}>+</button>
-      <button onClick={() => onAdd(quantity)}>Agregar al Carrito</button>
+      <button onClick={handleAdd}>Agregar al Carrito</button>
     </div>
   );
 };
